@@ -1,0 +1,25 @@
+{
+    "name": "pagekit/termine",
+    "type": "pagekit-extension",
+    "version": "1.0.0",
+    "title": "Termine",
+    "description": "List Manager for Termine.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Thomas Sablattnig",
+            "email": "thomas.sabe@gmx.at",
+            "homepage": ""
+        }
+    ],
+    "extra": {
+        "icon": "icon.svg",
+        "scripts": "scripts.php"
+    },
+    "archive": {
+        "exclude": [
+            "node_modules", 
+            "!/app"
+        ]
+    }
+}
