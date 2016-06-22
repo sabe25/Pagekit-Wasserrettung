@@ -9,10 +9,20 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class TerminController
 {
-    public function indexAction()
+    public function indexAction(Request $request)
     {
+    	$request = Request::createFromGlobals();
+		$intern = $request->query->get('intern');
+		if($intern == null){
+			$intern = 0;
+		}
 		//$util = App::db()->getUtility();
-		$result = App::db()->createQueryBuilder()->select('*')->from('@termine_list')->execute()->fetchAll();
+		$result = App::db()->createQueryBuilder()->select('*')
+												 ->from('@termine_list')
+												 ->where('intern = :intern', ['intern' => $intern])
+												 ->orderBy('date')
+												 ->execute()
+												 ->fetchAll();
 		
 		
         return [
@@ -35,7 +45,11 @@ class TerminController
 	 *	@Route("/id/")
 	 *	@Route("/id/{dbid}/", name="@termine/admin/id/dbid", methods="GET")
 	 **/
-	public function idAction($dbid = 0){
+	public function idAction(Request $request){
+
+		$request = Request::createFromGlobals();
+		$dbid = $request->query->get('dbid');
+
 		$result = App::db()->createQueryBuilder()->select('*')->from('@termine_list')->where('id = :id', ['id' => $dbid])->execute()->fetchAll();
 		
 		$cnt = 0;
@@ -77,6 +91,7 @@ class TerminController
 	/**
 	 *	@Route("/delete/")
 	 *	@Route("/delete/{dbid}/", name="@termine/admin/id/dbid", methods="GET")
+	 *	@Access("termine: editor")
 	 **/
 	public function deleteAction(Request $request){
 
@@ -98,8 +113,14 @@ class TerminController
         return true;
 	}
 	
-	public function saveAction(){
+	/**
+	 *	@Route("/save/")
+	 *	@Access("termine: editor")
+	 **/
+	public function saveAction(Request $request){
+
 		
+
 		$request = Request::createFromGlobals();
 		$datajson = $request->getContent();
 		$data = json_decode($datajson,true);
@@ -114,6 +135,13 @@ class TerminController
 			'Description' => $desc,
 			'Date' => $date]);
 		}
+		else{
+			$query= App::db()->createQueryBuilder();
+			$val = $query->select()->from('@termine_list')->where('id = :id',['id' => $id])->update([
+			'Title' => $title,
+			'Description' => $desc,
+			'Date' => $date]);
+		}
 		
 		
 		
@@ -121,7 +149,7 @@ class TerminController
 	}
 	
     /**
-     * @Access("hello: manage settings")
+     * @Access("termine: manage settings")
      */
     public function settingsAction()
     {

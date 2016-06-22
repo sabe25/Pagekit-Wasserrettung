@@ -1,7 +1,7 @@
 {
     "name": "pagekit/termine",
     "type": "pagekit-extension",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "title": "Termine",
     "description": "List Manager for Termine.",
     "license": "MIT",

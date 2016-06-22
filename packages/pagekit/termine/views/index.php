@@ -1,12 +1,23 @@
-<?php $view->style('hello', 'extensions/hello/assets/css/hello.css') ?>
-
-<div class="hello">
-    <h1>Hello <?= count($names) == 1 ? $names[0] : "to the ".count($names). " of you"; ?></h1>
-</div>
-
-<p><?= _c("{0}: No names|one: One name|more: %names% names", count($names), ["%names%" => count($names)]) ?><p>
 
 
-<?php foreach ($names as $name): ?>
-    <p class="uk-alert"><?= __("Hello %name%!", ["%name%" => $name]) ?></p>
-<?php endforeach ?>
+<div class="uk-form-row">
+        <div >
+			<table class="uk-table">
+				<thead>
+					<tr>
+						<th>Title</th>
+						<th>Description</th>
+						<th>Date</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php foreach($termine as $termin){ echo "<tr>
+					<td id='title{$termin["id"]}'>{$termin["Title"]}</td>
+					<td id='desc_{$termin["id"]}' style='word-wrap:break-word;max-width:500px'>{$termin["Description"]}</td>
+					<td id='date_{$termin["id"]}'>{$termin["Date"]}</td>
+					</tr>"; }?>
+				</tbody>
+			</table>
+			
+        </div>
+    </div>

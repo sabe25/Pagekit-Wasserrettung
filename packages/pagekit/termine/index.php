@@ -103,7 +103,7 @@ return [
             // 'active' => '@hello*'
 
             // Optional: Limit access to roles which have specific permission assigned
-            // 'access' => 'hello: manage hellos'
+            'access' => 'termine: editor'
         ],
 
         'termine: panel' => [
@@ -138,7 +138,12 @@ return [
         'termine: manage settings' => [
             'title' => 'Manage settings'
         ],
-
+        'termine: editor' => [
+            'title' => 'Permission to create, update and delete Termine'
+        ],
+        'termine: see intern' => [
+            'title' => 'Can see intern Temine'
+        ],
     ],
 
     /*
@@ -162,8 +167,8 @@ return [
     'events' => [
 
         'view.scripts' => function ($event, $scripts) {
-            $scripts->register('hello-link', 'termine:app/bundle/link.js', '~panel-link');
-            $scripts->register('hello-dashboard', 'termine:app/bundle/dashboard.js', '~dashboard');
+            $scripts->register('termine-link', 'termine:app/bundle/link.js', '~panel-link');
+            $scripts->register('termine-dashboard', 'termine:app/bundle/dashboard.js', '~dashboard');
 
         }
 

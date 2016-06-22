@@ -52,13 +52,22 @@ return [
      */
     'updates' => [
 
-        '0.5.0' => function ($app) {
+        '2.0.0' => function ($app) {
+            $util = $app['db']->getUtility();
+            $manager = $util->getSchemaManager();
+            
+            if ($util->tableExists('@termine_list')) {
 
-        },
+                $tableOld = $util->getTable('@termine_list');
+                $table = clone $tableOld;
 
-        '0.9.0' => function ($app) {
+                $table->addColumn('intern', 'boolean');
 
-        },
+                $comparator = new Comparator;
+                $manager->alterTable($comparator->diffTable($tableOld, $table));
+            }
+            ALTER TABLE `pk_termine_list` ADD `intern` BOOLEAN NOT NULL AFTER `Date`;
+        }
 
     ],
 

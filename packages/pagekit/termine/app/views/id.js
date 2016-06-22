@@ -14,14 +14,14 @@ t.exports={
 			this.$http.post("admin/termine/save",{id:id,title:title,desc:desc,date:date}).then(function(t){
 				if(t.data == 1){
 					this.$notify("Termin gespeichert.");
-					window.history.back();
+					window.location = window.location.href.replace("/id", "");
 				}
 				else{
 					this.$notify(t.data,"danger")
 				}
 			},
 			function(t){
-				this.$notify(t.data,"danger")
+				this.$notify(t.data,{timeout: 0,status:'danger'})
 			})
 		}
 	}
@@ -30,11 +30,13 @@ Vue.ready(t.exports)}
 ]);
 
 $(function() {
-	window.onload= "initdatepicker()";
+	initdatepicker();
 	
 });
 function initdatepicker(){
-	var element = document.getElementById("term-date");
-	var datepicker = UIkit.datepicker(element, { /* options */ });
-
+	/*var element = document.getElementById("term-date");
+	var datepicker = UIkit.datepicker(element, {  });*/
+	$('.datepicker').each(function () {
+	    var datepicker = $.UIkit.datepicker(this);
+	});
 }

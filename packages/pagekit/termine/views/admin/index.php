@@ -5,8 +5,13 @@
     <div class="uk-margin uk-flex uk-flex-space-between uk-flex-wrap" data-uk-margin>
         <div data-uk-margin>
             <h2 class="uk-margin-remove">Termine</h2>
+            <br/>
+            <select  v-model="loc" >
+            	<option v-for="option in options" v-bind:value="option.value" >{{option.text}}</option>
+            </select>
         </div>
         <div data-uk-margin>
+        
             <button class="uk-button uk-button-primary" @click.prevent="add">Add</button>
         </div>
     </div>
@@ -23,7 +28,14 @@
 					</tr>
 				</thead>
 				<tbody>
-					<?php foreach($termine as $termin){ echo "<tr><td>{$termin["id"]}</td><td>{$termin["Title"]}</td><td style='word-wrap:break-word;max-width:500px'>{$termin["Description"]}</td><td>{$termin["Date"]}</td><td><button class='uk-button uk-button-danger' @click.prevent='delete({$termin["id"]})'>X</button></td></tr>"; }?>
+					<?php foreach($termine as $termin){ echo "<tr>
+					<td id='id_{$termin["id"]}'>{$termin["id"]}</td>
+					<td id='title{$termin["id"]}'>{$termin["Title"]}</td>
+					<td id='desc_{$termin["id"]}' style='word-wrap:break-word;max-width:500px'>{$termin["Description"]}</td>
+					<td id='date_{$termin["id"]}'>{$termin["Date"]}</td>
+					<td id='edit_{$termin["id"]}'><button class='uk-button uk-button-primary' @click.prevent='edit({$termin["id"]})'>Edit</button></td>
+					<td id='del_{$termin["id"]}'><button class='uk-button uk-button-danger' @click.prevent='delete({$termin["id"]})'>X</button></td>
+					</tr>"; }?>
 				</tbody>
 			</table>
 			

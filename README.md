@@ -1,4 +1,3 @@
-# Pagekit-Wasserrettung
 [![Pagekit Banner](https://cloud.githubusercontent.com/assets/1716665/14317675/ba034b8c-fc09-11e5-81ed-f10f37d86ea5.png)](https://pagekit.com)
 
 # Pagekit
@@ -18,7 +17,7 @@ Pagekit is a modular and lightweight CMS built with Symfony components and Vue.j
 
 1. Download the [latest release](https://www.pagekit.com/download).
 2. Extract the archive and copy the extracted folder to your webserver.
-3. Open the extracted url in your browser, i.e. `http://localhost/pagekit` and follow the installer. 
+3. Open the extracted url in your browser, i.e. `http://localhost/pagekit` and follow the installer.
 
 ## Install from source
 
@@ -33,9 +32,9 @@ Pagekit offers a set of commands to run usual tasks on the command line. You can
 
 ## Contributing
 
-Finding bugs, sending pull requests, translating Pagekit or improving our docs - 
+Finding bugs, sending pull requests, translating Pagekit or improving our docs -
 any contribution is welcome and highly appreciated. To get started, head over
-to our [contribution guidelines](CONTRIBUTING.md). Thanks!
+to our [contribution guidelines](.github/CONTRIBUTING.md). Thanks!
 
 ## Copyright and License
 
