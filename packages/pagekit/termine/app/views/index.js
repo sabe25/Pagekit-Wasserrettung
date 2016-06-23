@@ -2,10 +2,11 @@
 t.exports={
 	el:"#termine",
 	data:{
-		loc:0,
+		loc:2,
 		options:[
 			{text:"intern",value:1},
-			{text:"extern",value:0}
+			{text:"extern",value:0},
+			{text:"all",value:2}
 		]
 	},
 	methods:{
@@ -57,7 +58,7 @@ t.exports={
 	},
 	created: function () {
     // `this` points to the vm instance
-		this.loc = this.getParam('intern') || 0;
+		this.loc = this.getParam('intern') || 2;
   }
 },
 Vue.ready(t.exports)}

@@ -1,0 +1,25 @@
+{
+    "name": "pagekit/calendar",
+    "type": "pagekit-extension",
+    "version": "2.0.0",
+    "title": "Calendar",
+    "description": "Kalender",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Thomas Sablattnig",
+            "email": "thomas.sabe@gmx.at",
+            "homepage": ""
+        }
+    ],
+    "extra": {
+        "icon": "icon.svg",
+        "scripts": "scripts.php"
+    },
+    "archive": {
+        "exclude": [
+            "node_modules", 
+            "!/app"
+        ]
+    }
+}

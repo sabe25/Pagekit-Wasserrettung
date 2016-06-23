@@ -161,6 +161,11 @@ return [
 
     ],
 
+    'widgets' => [
+
+        'widgets/termin-table.php'
+
+    ],
     /*
      * Listen to events.
      */

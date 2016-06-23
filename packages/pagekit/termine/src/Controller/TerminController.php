@@ -14,16 +14,24 @@ class TerminController
     	$request = Request::createFromGlobals();
 		$intern = $request->query->get('intern');
 		if($intern == null){
-			$intern = 0;
+			$intern = 2;
 		}
 		//$util = App::db()->getUtility();
-		$result = App::db()->createQueryBuilder()->select('*')
-												 ->from('@termine_list')
-												 ->where('intern = :intern', ['intern' => $intern])
-												 ->orderBy('date')
-												 ->execute()
-												 ->fetchAll();
-		
+		if($intern == 2){
+			$result = App::db()->createQueryBuilder()->select('*')
+													 ->from('@termine_list')
+													 ->orderBy('date')
+													 ->execute()
+													 ->fetchAll();
+		}
+		else{
+			$result = App::db()->createQueryBuilder()->select('*')
+													 ->from('@termine_list')
+													 ->where('intern = :intern', ['intern' => $intern])
+													 ->orderBy('date')
+													 ->execute()
+													 ->fetchAll();
+		}
 		
         return [
         '$view' => [
@@ -83,7 +91,23 @@ class TerminController
         ],
 
         // pass parameters to view file
-        'termine' => $result,
+        '$data' => [
+        	'id' => $result[0]['id'],
+        	'intern' => $result[0]['intern'],
+        	'Title' => $result[0]['Title'],
+        	'Description' => $result[0]['Description'],
+        	'date' => $result[0]['Date'],
+        	'options' => [
+        		[
+        			'text' => 'intern',
+        			'value' => 1
+        		],
+        		[
+        			'text' => 'extern',
+        			'value' => 0
+        		]
+        	]
+        ],
 		'text' => $text,
 		'saveText' => $SaveText
 		];

@@ -1,4 +1,4 @@
-<?php $view->script('termine', 'termine:app/views/index.js', ['vue', 'jquery']) ?>
+<?php $view->script('termine', 'termine:app/bundle/index.js', ['vue', 'jquery']) ?>
 
 <div id="termine" class="uk-form uk-form-horizontal" >
 
@@ -25,10 +25,12 @@
 						<th>Title</th>
 						<th>Description</th>
 						<th>Date</th>
+						<th></th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
-					<?php foreach($termine as $termin){ echo "<tr>
+					<?php foreach($termine as $termin){ echo "<tr style='border-style: none none none solid;border-color: " . ($termin["intern"] == 1 ? "#3a94e0" : "#3ae040") . ";''>
 					<td id='id_{$termin["id"]}'>{$termin["id"]}</td>
 					<td id='title{$termin["id"]}'>{$termin["Title"]}</td>
 					<td id='desc_{$termin["id"]}' style='word-wrap:break-word;max-width:500px'>{$termin["Description"]}</td>

@@ -1,4 +1,4 @@
-<?php $view->script('termine', 'termine:app/views/id.js', ['vue', 'jquery', 'uikit']) ?>
+<?php $view->script('termine', 'termine:app/bundle/id.js', ['vue', 'jquery', 'uikit']) ?>
 
 <script type="text/javascript" src="/pagekit/app/assets/uikit/js/components/datepicker.js"></script>
 <div id="termine-id" class="uk-form uk-form-horizontal" >
@@ -15,21 +15,29 @@
     </div>
     <div class="uk-form-row">
         <div style="width:80%">
+			
+			
 			<div class="uk-grid">
 				<p class="uk-text-middle uk-width-1-2">ID:</p>
-				<p id="term-id" class="uk-width-1-2" ><?= $termine != null ? $termine[0]["id"]: 'Manuelle ID zuweisung' ?></p>
+				<p id="term-id" class="uk-width-1-2" v-model="id" ></p>
 			</div>
 			<div class="uk-grid">
 				<p class="uk-text-middle uk-width-1-2">Title:</p>
-				<input id="term-title" class="uk-width-1-2" type="text" value="<?= $termine != null ? $termine[0]['Title']: '' ?>"/>
+				<select  v-model="intern" >
+	            	<option v-for="option in options" v-bind:value="option.value" >{{option.text}}</option>
+	            </select>
+			</div>
+			<div class="uk-grid">
+				<p class="uk-text-middle uk-width-1-2">Title:</p>
+				<input id="term-title" class="uk-width-1-2" type="text" v-model="Title"/>
 			</div>
 			<div class="uk-grid">
 				<p class="uk-text-middle uk-width-1-2">Description:</p>
-				<textarea id="term-desc" class="uk-width-1-2"  value="<?= $termine != null ? $termine[0]['Description']: '' ?>"><?= $termine != null ? $termine[0]['Description']: '' ?></textarea>
+				<textarea id="term-desc" class="uk-width-1-2"  v-model="Description"></textarea>
 			</div>
 			<div class="uk-grid">
 				<p class="uk-text-middle uk-width-1-2">Date:</p>
-				 <input onload="initdatepicker" id="term-date" class="uk-width-1-6 datepicker" type="text" data-uk-datepicker="{format:'DD.MM.YYYY'}" value="<?= $termine != null ? $termine[0]['Date']: '' ?>"/ >
+				 <input  id="term-date" class="uk-width-1-6 datepicker" type="text" data-uk-datepicker="{format:'DD.MM.YYYY'}" v-model="date"/ >
 			</div>
 			
         </div>

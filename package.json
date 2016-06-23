@@ -29,6 +29,12 @@
     "vue-hot-reload-api": "^1.2.0",
     "vue-html-loader": "^1.0.0",
     "vue-loader": "^8.2.0",
-    "webpack": "^1.12.9"
+    "webpack": "^1.12.9",
+    "webpack-config-babel6": "0.0.1",
+    "webpack-config-vue": "^1.0.5"
+  },
+  "dependencies": {
+    "lodash": "^3.10.1",
+    "vue": "^1.0.25"
   }
 }

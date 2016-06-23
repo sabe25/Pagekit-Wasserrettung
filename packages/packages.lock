@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "44817d1d513a5262bf040d916bae3fd0",
-    "content-hash": "5f4570e4ee9e3527d1f0299bf2d2b7ec",
+    "hash": "081c6c26359715f295e22a267228cea0",
+    "content-hash": "d0c537e293f08c373d544c63466e3f56",
     "packages": [
         {
             "name": "abeautifulsite/simpleimage",
@@ -85,12 +85,12 @@
         },
         {
             "name": "pagekit/blog",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "dist": {
                 "type": "zip",
-                "url": "https://pagekit.com/package/pagekit/blog/1.0.0.zip",
+                "url": "https://pagekit.com/package/pagekit/blog/1.0.1.zip",
                 "reference": null,
-                "shasum": "68b11036b967ef5fa07e910dfb5d987f4f0cad6d"
+                "shasum": "71ff7e51bfcfa17837d3fe6682012d0054392f40"
             },
             "archive": {
                 "exclude": [
