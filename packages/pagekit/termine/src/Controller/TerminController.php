@@ -81,35 +81,35 @@ class TerminController
 		
 		
         return [
-        '$view' => [
+	        '$view' => [
 
-            // Rendered in the site's <title>
-            'title' => 'Termine',
+	            // Rendered in the site's <title>
+	            'title' => 'Termine',
 
-            // view file that is rendered
-            'name' => 'termine:views/admin/id.php',
-        ],
+	            // view file that is rendered
+	            'name' => 'termine:views/admin/id.php',
+	        ],
 
-        // pass parameters to view file
-        '$data' => [
-        	'id' => $result[0]['id'],
-        	'intern' => $result[0]['intern'],
-        	'Title' => $result[0]['Title'],
-        	'Description' => $result[0]['Description'],
-        	'date' => $result[0]['Date'],
-        	'options' => [
-        		[
-        			'text' => 'intern',
-        			'value' => 1
-        		],
-        		[
-        			'text' => 'extern',
-        			'value' => 0
-        		]
-        	]
-        ],
-		'text' => $text,
-		'saveText' => $SaveText
+	        // pass parameters to view file
+	        '$data' => [
+	        	'id' => $result[0]['id'],
+	        	'intern' => $result[0]['intern'],
+	        	'Title' => $result[0]['Title'],
+	        	'Description' => $result[0]['Description'],
+	        	'date' => $result[0]['Date'],
+	        	'options' => [
+	        		[
+	        			'text' => 'intern',
+	        			'value' => 1
+	        		],
+	        		[
+	        			'text' => 'extern',
+	        			'value' => 0
+	        		]
+	        	]
+	        ],
+			'text' => $text,
+			'saveText' => $saveText
 		];
 	}
 	/**

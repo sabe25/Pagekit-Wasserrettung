@@ -72,19 +72,19 @@ return [
      * Define routes.
      */
     'routes' => [
-'/api/calendar' => [
-            'name' => '@calendar/api',
-            'controller' => [
-                'Pagekit\\Calendar\\Controller\\CalendarAPIController'
-            ]
-        ],
+
         '/calendar' => [
             'name' => '@calendar/admin',
             'controller' => [
                 'Pagekit\\Calendar\\Controller\\CalendarController'
             ]
+        ],
+        '/api/calendar' => [
+            'name' => '@calendar/api',
+            'controller' => [
+                'Pagekit\\Calendar\\Controller\\CalendarAPIController'
+            ]
         ]
-        
 
     ],
 
@@ -144,8 +144,8 @@ return [
         'calendar: manage settings' => [
             'title' => 'Manage settings'
         ],
-        'calendar: editor' => [
-            'title' => 'Permission to create, update and delete calendar'
+        'calendar: api access' => [
+            'title' => 'Permission to use the Calendar API'
         ],
         'calendar: see intern' => [
             'title' => 'Can see intern Temine'

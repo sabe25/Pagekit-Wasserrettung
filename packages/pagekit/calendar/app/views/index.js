@@ -53,11 +53,83 @@ module.exports={
 	},
 	created: function () {
     // `this` points to the vm instance
-    	
-		$('#calendar-app').fullCalendar({
-			contentHeight:500,
-			events:this.events
-    	});
+    	initCalendar = function(vue){
+			window.calendar = $('#calendar-app').fullCalendar({
+						contentHeight:500,
+						events:vue.events,
+						eventDrop: function(event, delta, revertFunc) {
+
+					        /*alert(event.title + " was dropped on " + event.start.format());
+
+					        if (!confirm("Are you sure about this change?")) {
+					            revertFunc();
+					        }*/
+					        if(event.editable == "0" || event.startEditable == "0"){
+					        	vue.$notify("Event kann nicht verschoben werden");
+								revertFunc();
+					        }
+					        else{
+					        	vue.$http.post("admin/api/calendar/update",
+					        		{dbid:event.id,
+					        		 key:"start",
+					        		 val:event.start.format()
+					        		}).then(function(t){
+										if(t.data == false){
+											this.$notify(t.data,{timeout:0});
+											revertFunc();
+										}
+										else{
+											this.$notify("Event erfolgreich verschoben");
+										}				
+									},function(t){
+											this.$notify(t.data,{timeout:0})
+											revertFunc();
+								});
+					        }
+					    },
+					    eventResize: function(event, delta, revertFunc) {
+
+					        if(event.editable == "0" || event.durationEditable == "0"){
+					        	vue.$notify("Die Länge des Events kann nicht verändert werden");
+								revertFunc();
+					        }
+					        else{
+					        	vue.$http.post("admin/api/calendar/update",
+					        		{dbid:event.id,
+					        		 key:"end",
+					        		 val:event.end.format()
+					        		}).then(function(t){
+										if(t.data == false){
+											this.$notify(t.data,{timeout:0});
+											revertFunc();
+										}
+										else{
+											this.$notify("Event erfolgreich geändert");
+										}				
+									},function(t){
+											this.$notify(t.data,{timeout:0})
+											revertFunc();
+								});
+					        }
+					    }
+    			
+						
+			});
+    	};
+
+
+    	this.$http.post("admin/api/calendar/").then(function(t){
+				if(t.data == false){
+					this.$notify("Fehler beim laden des Kalenders");
+				}
+				else{
+					this.events = t.data.$data;
+					initCalendar(this);
+				}				
+			},function(t){
+					this.$notify(t.data,{timeout:0})
+		});
+		
 
   }
 };

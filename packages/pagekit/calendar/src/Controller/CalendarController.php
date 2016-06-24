@@ -11,7 +11,6 @@ class CalendarController
 {
     public function indexAction(Request $request)
     {
-    	post("/pagekit/api/calendar",array());
         return [
 	        '$view' => [
 
@@ -20,8 +19,7 @@ class CalendarController
 
 	            // view file that is rendered
 	            'name' => 'calendar:views/admin/index.php',
-	        ],
-	        '$data' => $result
+	        ]
 	        
 	    ];
     }
@@ -29,6 +27,7 @@ class CalendarController
     public function post($url, $fields){
 
 		//url-ify the data for the POST
+		$fields_string = "";
 		foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
 		$fields_string = rtrim($fields_string,'&');
 
