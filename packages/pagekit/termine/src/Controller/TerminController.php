@@ -109,7 +109,7 @@ class TerminController
 	        	]
 	        ],
 			'text' => $text,
-			'saveText' => $saveText
+			'saveText' => $SaveText
 		];
 	}
 	/**

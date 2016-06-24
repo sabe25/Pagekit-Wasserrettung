@@ -17,24 +17,17 @@ class CalendarAPIController
 		if($start == null){
 			$date = date('Y-m-d');
 			list($year, $month, $day) = explode('-',$date);
-			$start = $year . "-" . $month . "-01";
-			if($month == 12){
-				$year = $year + 1;
-				$month = "01";
-			}
-			else{
-				$month = $month +1;
-			}
-			$end = $year . "-" . $month . "-01";
+			$start = $year . "-01-01";
+			$year = $year +1;
+			$end = $year . "-01-01";
 		}
 		$result = App::db()->createQueryBuilder()->select('*')
 												 ->from('@calendar_events')
-												 ->where('start > :start AND end < :end', ['start' => $start, 'end' => $end])
+												 ->where('start >= :start AND end < :end', ['start' => $start, 'end' => $end])
 												 ->execute()
 												 ->fetchAll();
 		foreach($result as $row){
 			$row["editable"] = $row["editable"] == "0" ? false : true;
-			$row["allDay"] = $row["allDay"] == "0" ? false : true;
 			$row["startEditable"] = $row["startEditable"] == "0" ? false : true;
 			$row["durationEditable"] = $row["durationEditable"] == "0" ? false : true;
 			$row["overlap"] = $row["overlap"] == "0" ? false : true;
@@ -93,6 +86,38 @@ class CalendarAPIController
 		//return $setString;
 		
 		$result = App::db()->executeQuery('update @calendar_events set ' . $setString . " where id = " . $id)->execute();
+
+        return [
+	        '$data' => $result
+	    ];
+    }
+    /**
+    *	@Route("/new/")
+    *	@Access('calendar: api access')
+    */
+	public function newAction(Request $request)
+    {
+    	//return "hallo";
+    	$request = Request::createFromGlobals();
+    	$datajson = $request->getContent();
+		$data = json_decode($datajson,true);
+
+		$key = $data['key'];
+		$val = $data['val'];
+
+		if($key == false || $val == false) return $key + " " + $val;
+
+		$val = str_replace(",", "','", $val);
+		$val = "'".$val."'";
+		$preDefKey = "url,className,editable,startEditable,durationEditable,overlap,color";
+		$preDefVal = "'#','',1,1,1,1,''";
+
+		$key = $key . "," . $preDefKey;
+		$val = $val . "," . $preDefVal;
+		
+
+		
+		$result = App::db()->executeQuery('insert into @calendar_events ('.$key.') values ('.$val.') ');
 
         return [
 	        '$data' => $result

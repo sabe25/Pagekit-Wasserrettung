@@ -13,8 +13,7 @@ return [
             $util->createTable('@calendar_events', function ($table) {
                 $table->addColumn('id', 'integer', ['unsigned' => true, 'length' => 10, 'autoincrement' => true]);
                 $table->addColumn('title', 'string', ['length' => 255, 'default' => '']);      
-                $table->addColumn('description', 'string', ['length' => 255, 'default' => '']);                          
-				$table->addColumn('allDay', 'boolean');      
+                $table->addColumn('description', 'string', ['length' => 255, 'default' => '']);      
 				$table->addColumn('start', 'date', ['length' => 255]);
                 $table->addColumn('end', 'date', ['length' => 255]);
                 $table->addColumn('url', 'string', ['length' => 255, 'default' => '']);      
