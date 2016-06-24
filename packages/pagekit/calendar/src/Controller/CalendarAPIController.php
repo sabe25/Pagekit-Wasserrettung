@@ -74,8 +74,13 @@ class CalendarAPIController
 				if($key == "start"){
 					list($startyear, $startmonth, $startday) = explode('-',$cur['start']);
 					list($endyear, $endmonth, $endday) = explode('-',$cur['end']);
+					$difYears = $endyear- $startyear;
+					if($difYears != 0) return false;
 					$difMonth = $endmonth - $startmonth;
+
 					$difDays = $endday + 30*$difMonth - $startday;
+
+					$newEndDate = $startyear . "-" . ($startmonth + $difMonth) . "-" . ($startday + $difDays);
 					$setString .= $key[$i] . "='" . $val[$i] . "', end = ";
 				}
 				else{
