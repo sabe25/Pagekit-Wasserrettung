@@ -174,11 +174,11 @@ class CalendarController
     {
         return [
             '$view' => [
-                'title' => __('Hello Settings'),
-                'name'  => 'termine:views/admin/settings.php'
+                'title' => __('Calendar Settings'),
+                'name'  => 'calendar:views/admin/settings.php'
             ],
             '$data' => [
-                'config' => App::module('hello')->config()
+                'config' => App::module('calendar')->config()
             ]
         ];
     }

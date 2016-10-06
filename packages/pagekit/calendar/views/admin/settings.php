@@ -1,4 +1,4 @@
-<?php $view->script('settings', 'termine:app/bundle/settings.js', ['vue', 'jquery']) ?>
+<?php $view->script('settings', 'calendar:app/bundle/settings.js', ['vue', 'jquery']) ?>
 
 <div id="settings" class="uk-form uk-form-horizontal" v-cloak>
 
@@ -12,9 +12,9 @@
     </div>
 
     <div class="uk-form-row">
-        <label class="uk-form-label">{{ 'Default name' | trans }}</label>
+        <label class="uk-form-label">{{ 'Show Termine in Calendar' | trans }}</label>
         <div class="uk-form-controls">
-            <input type="text" v-model="config.default">
+            <input type="checkbox" v-model="config.allowTermine">
         </div>
     </div>
 

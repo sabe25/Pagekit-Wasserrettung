@@ -1259,3 +1259,30 @@ be a descendant of the grid when it is being dragged.
 	border-top-color: transparent;
 	border-bottom-color: transparent;
 }
+
+
+.fc-event-dienst{
+	border-color: #00b300;
+	background-color: #00b300;
+}
+.fc-event-veranstaltung{
+	border-color: #ffde00;
+	background-color: #ffde00;
+	color:black; 
+}
+.fc-event-veranstaltung:hover{
+	color:gray; 
+}
+.fc-event-big{
+	border-color: #cc3300;
+	background-color:#cc3300;
+	line-height: 2;
+    font-size: 1em;
+}
+.fc-event-termin{
+	border-color: hsla(200,50%,33%,1);
+    border-width: 2px;
+}
+.fc-legende .fc-event{
+    padding: 0px 11px;
+}

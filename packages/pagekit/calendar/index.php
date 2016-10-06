@@ -100,7 +100,7 @@ return [
             'label' => 'Calendar',
 
             // Icon to display
-            'icon' => 'calendar:icon.svg',
+            'icon' => 'additional/icons/svg/calendar.svg',
 
             // URL this menu item links to
             'url' => '@calendar/admin',
@@ -109,7 +109,7 @@ return [
             // 'active' => '@hello*
 
             // Optional: Limit access to roles which have specific permission assigned
-            'access' => 'calendar: editor'
+            //'access' => 'calendar: editor'
         ],
 
         'calendar: panel' => [
@@ -119,7 +119,7 @@ return [
 
             // See above
             'label' => 'calendar',
-            'icon' => 'calendar:icon.svg',
+            'icon' => 'additional/icons/svg/calendar.svg',
             'url' => '@calendar/admin'
             // 'access' => 'hello: manage hellos'
         ],
@@ -147,9 +147,12 @@ return [
         'calendar: api access' => [
             'title' => 'Permission to use the Calendar API'
         ],
-        'calendar: see intern' => [
-            'title' => 'Can see intern Temine'
+        'calendar: foreign event edit' => [
+            'title' => 'Permission to edit events that dont belongs to you'
         ],
+        'calendar: new event' => [
+            'title' => 'Create new Events'
+        ]
     ],
 
     /*
@@ -163,7 +166,7 @@ return [
      */
     'config' => [
 
-        'default' => 'World'
+        'allowTermine' => 'false'
 
     ],
 

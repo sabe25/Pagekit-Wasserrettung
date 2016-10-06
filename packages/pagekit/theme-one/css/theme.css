@@ -1299,7 +1299,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
 	color:#fff
 }
 .uk-navbar {
-	background:#fff;
+	background:transparent;
 	color:#adadad;
 	margin-left:-15px;
 	margin-right:-15px
@@ -5718,9 +5718,9 @@ a.uk-thumbnail:hover,a.uk-thumbnail:focus {
 	max-width:980px;
 	padding:0 30px
 }
-@media (min-width:1220px) {
+@media (min-width:1420px) {
 	.uk-container {
-		max-width:1200px;
+		max-width:1400px;
 		padding:0 40px
 	}
 }
@@ -7054,7 +7054,7 @@ html {
 }
 .tm-navbar {
 	position:relative;
-	background:#fff;
+	background:white;
 	box-shadow:0 3px 8px -4px rgba(0,0,0,0.15);
 	z-index:1
 }
@@ -7117,12 +7117,17 @@ html {
 }
 .tm-navbar-contrast .uk-navbar-toggle:after {
 	background:url("../less/uikit/images/navbar-toggle-contrast.svg") 0 0 no-repeat
+	
 }
 .tm-navbar-contrast .tm-logo {
 	display:none
 }
 .tm-navbar-contrast .tm-logo-contrast {
 	display:inline-block
+}
+.tm-logo{
+	padding-bottom: 3px;
+    padding-top: 2px;
 }
 .tm-hero-height {
 	min-height:calc(100vh - 81px)
@@ -7144,3 +7149,15 @@ html {
 	font-size:16px;
 	margin-right:20px;
 }
+
+
+.wr-site .uk-button-primary{
+	background-color: #1766a6;
+}
+.wr-site .tm-navbar{
+	background-color:#ffdc00;
+	box-shadow: 0 3px 8px -4px rgba(0, 0, 0, 0.39);
+}
+.wr-site .tm-navbar.tm-navbar-50-transparent{
+	box-shadow: none;
+	}

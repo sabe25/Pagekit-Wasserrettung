@@ -22,7 +22,7 @@
 				<p id="term-id" class="uk-width-1-2" v-model="id" ></p>
 			</div>
 			<div class="uk-grid">
-				<p class="uk-text-middle uk-width-1-2">Title:</p>
+				<p class="uk-text-middle uk-width-1-2">Anzeigebereich:</p>
 				<select  v-model="intern" >
 	            	<option v-for="option in options" v-bind:value="option.value" >{{option.text}}</option>
 	            </select>

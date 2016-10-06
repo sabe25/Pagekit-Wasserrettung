@@ -22,7 +22,8 @@ return [
                 $table->addColumn('startEditable', 'boolean');
                 $table->addColumn('durationEditable', 'boolean');  
                 $table->addColumn('overlap', 'boolean'); 
-                $table->addColumn('color', 'string', ['length' => 255, 'default' => '']);                                                                                                  
+                $table->addColumn('color', 'string', ['length' => 255, 'default' => '']);            
+                $table->addColumn('creatorID', 'integer');                                                                                       
                 $table->setPrimaryKey(['id']);
             });
         }
