@@ -94,7 +94,7 @@ return [
             'label' => 'Termine',
 
             // Icon to display
-            'icon' => 'additional/icons/svg/tasks.svg',
+            'icon' => 'assets/media/icons/tasks.svg',
 
             // URL this menu item links to
             'url' => '@termine/admin',
@@ -113,7 +113,7 @@ return [
 
             // See above
             'label' => 'Termine',
-            'icon' => 'additional/icons/svg/tasks.svg',
+            'icon' => 'assets/media/icons/tasks.svg',
             'url' => '@termine/admin'
             // 'access' => 'hello: manage hellos'
         ],

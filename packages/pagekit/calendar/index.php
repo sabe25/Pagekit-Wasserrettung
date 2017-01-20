@@ -100,7 +100,7 @@ return [
             'label' => 'Calendar',
 
             // Icon to display
-            'icon' => 'additional/icons/svg/calendar.svg',
+            'icon' => 'assets/media/icons/calendar.svg',
 
             // URL this menu item links to
             'url' => '@calendar/admin',
@@ -119,7 +119,7 @@ return [
 
             // See above
             'label' => 'calendar',
-            'icon' => 'additional/icons/svg/calendar.svg',
+            'icon' => 'assets/media/icons/calendar.svg',
             'url' => '@calendar/admin'
             // 'access' => 'hello: manage hellos'
         ],
