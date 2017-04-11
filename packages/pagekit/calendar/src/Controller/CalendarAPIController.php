@@ -35,8 +35,8 @@ class CalendarAPIController
 					$editable = true;
 				}
 				else
-					$editable = false;	
-			} 
+					$editable = false;
+			}
 			$row["editable"] = $editable;
 			$row["startEditable"] = $editable;
 			$row["durationEditable"] = $editable;
@@ -56,7 +56,7 @@ class CalendarAPIController
 		        'newEvent' => $newEvent]
 	    ];
     }
-	
+
 	/**
 	*	@Route("/gettermine/")
 	**/
@@ -102,7 +102,7 @@ class CalendarAPIController
 		if (count($cur) == 0){
 			return false;
 		}
-		
+
 
 		$key = explode('|', $key);
 		$val = explode('|', $val);
@@ -123,7 +123,7 @@ class CalendarAPIController
 					list($upyear, $upmonth, $upday) = explode('-',$val[$i]);
 					$newEndDate = $upyear . "-" . ($upmonth + $difMonth) . "-" . ($upday + $difDays);
 					$setString .= $key[$i] . "='" . $val[$i] . "', end = '" . $newEndDate . "'";
-					
+
 				}
 				else{
 					$setString .= $key[$i] . "='" . $val[$i] . "'";
@@ -164,10 +164,11 @@ class CalendarAPIController
 
 		$key = $key . "," . $preDefKey;
 		$val = $val . "," . $preDefVal;
-		
 
-		
-		$result = App::db()->executeQuery('insert into @calendar_events ('.$key.') values ('.$val.') ');
+
+
+		$result = App::db()->executeQuery('insert into @calendar_events ('.$key.') values ('.$val.');');
+		$result = App::db()->executeQuery('SELECT LAST_INSERT_ID();')->fetchAll();
 
         return [
 	        '$data' => $result
@@ -183,7 +184,7 @@ class CalendarAPIController
     	//return "hallo";
     	$request = Request::createFromGlobals();
     	$datajson = $request->getContent();
-		$data = json_decode($datajson,true); 
+		$data = json_decode($datajson,true);
 
 		$dbid = $data['id'];
 
@@ -195,7 +196,7 @@ class CalendarAPIController
 		if (count($cur) == 0){
 			return false;
 		}
-		
+
 		$result = App::db()->executeQuery("delete from @calendar_events where id='" . $dbid. "'");
 
         return [
@@ -203,70 +204,3 @@ class CalendarAPIController
 	    ];
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

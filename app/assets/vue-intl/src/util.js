@@ -2,39 +2,42 @@
  * Utility functions.
  */
 
-module.exports = function (Vue) {
+var util = {}, arr = Array.prototype, obj = Object.prototype;
 
-    var a = Array.prototype,
-        o = Object.prototype,
-        _ = Vue.util.extend({}, Vue.util);
+export default function (Vue) {
+    util = Vue.util;
+}
 
-    _.isString = function (value) {
-        return typeof value === 'string';
-    };
+export const isArray = Array.isArray;
 
-    _.isNumber = function (value) {
-        return typeof value === 'number';
-    };
+export function isString(val) {
+    return typeof val === 'string';
+}
 
-    _.isUndefined = function (value) {
-        return typeof value === 'undefined';
-    };
+export function isNumber(val) {
+    return typeof val === 'number';
+}
 
-    _.isDate = function (value) {
-        return o.toString.call(value) === '[object Date]';
-    };
+export function isObject(obj) {
+    return obj !== null && typeof obj === 'object';
+}
 
-    _.toInt = function (value) {
-        return parseInt(value, 10);
-    };
+export function isUndefined(val) {
+    return typeof val === 'undefined';
+}
 
-    _.concat = function (arr1, arr2, index) {
-        return arr1.concat(a.slice.call(arr2, index));
-    };
+export function isDate(val) {
+    return obj.toString.call(val) === '[object Date]';
+}
 
-    _.uppercase = function (str) {
-        return _.isString(str) ? str.toUpperCase() : str;
-    };
+export function toInt(val) {
+    return parseInt(val, 10);
+}
 
-    return _;
-};
+export function concat(arr1, arr2, index) {
+    return arr1.concat(arr.slice.call(arr2, index));
+}
+
+export function uppercase(str) {
+    return isString(str) ? str.toUpperCase() : str;
+}

@@ -24,7 +24,7 @@
                     <div class="uk-panel uk-panel-box">
 
                         <div class="uk-form-row">
-                            <input class="uk-form-large uk-width-1-1" type="text" name="credentials[username]" value="<?= $last_username ?>" placeholder="<?= __('Username') ?>" autofocus>
+                            <input class="uk-form-large uk-width-1-1" type="text" name="credentials[username]" value="<?= $this->escape($last_username) ?>" placeholder="<?= __('Username') ?>" autofocus>
                         </div>
 
                         <div class="uk-form-row">
@@ -36,7 +36,7 @@
                         </p>
 
                         <?php $view->token()->get() ?>
-                        <input type="hidden" name="redirect" value="<?= $redirect ?>">
+                        <input type="hidden" name="redirect" value="<?= $this->escape($redirect) ?>">
 
                     </div>
 
@@ -47,7 +47,7 @@
 
                 </form>
 
-                <form class="js-toggle uk-form tm-form uk-hidden" action="<?= $view->url('@system/resetpassword/reset') ?>" method="post">
+                <form class="js-toggle uk-form tm-form uk-hidden" action="<?= $view->url('@user/resetpassword/request') ?>" method="post">
 
                     <div class="uk-panel uk-panel-box">
 

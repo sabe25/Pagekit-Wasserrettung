@@ -3,10 +3,7 @@
 namespace Pagekit\Console\Commands;
 
 use Pagekit\Application\Console\Command;
-use Pagekit\Console\Translate\TransifexApi;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class TranslationFetchCommand extends Command
@@ -72,12 +69,11 @@ class TranslationFetchCommand extends Command
     /**
      * Returns the extension path.
      *
-     * @param  string $path
-     * @return array
+     * @param $resource
+     * @return string|boolean
      */
     protected function getPath($resource)
     {
-        $root = $this->container['path.packages'];
         $vendor = 'pagekit';
 
         if ($resource == "system") {

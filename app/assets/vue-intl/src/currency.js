@@ -3,23 +3,22 @@
  * Based on: https://docs.angularjs.org/api/ng/filter/currency
  */
 
-module.exports = function (_) {
+import { formatNumber } from './number';
+import { isUndefined } from './util';
 
-    return function (amount, currencySymbol, fractionSize) {
+export default function (amount, currencySymbol, fractionSize) {
 
-        var formats = this.$locale.NUMBER_FORMATS;
+    var formats = this.$locale.NUMBER_FORMATS;
 
-        if (_.isUndefined(currencySymbol)) {
-            currencySymbol = formats.CURRENCY_SYM;
-        }
+    if (isUndefined(currencySymbol)) {
+        currencySymbol = formats.CURRENCY_SYM;
+    }
 
-        if (_.isUndefined(fractionSize)) {
-            fractionSize = formats.PATTERNS[1].maxFrac;
-        }
+    if (isUndefined(fractionSize)) {
+        fractionSize = formats.PATTERNS[1].maxFrac;
+    }
 
-        // if null or undefined pass it through
-        return (amount == null) ? amount : _.formatNumber(amount, formats.PATTERNS[1], formats.GROUP_SEP, formats.DECIMAL_SEP, fractionSize).
-        replace(/\u00A4/g, currencySymbol);
-    };
-
-};
+    // if null or undefined pass it through
+    return (amount == null) ? amount : formatNumber(amount, formats.PATTERNS[1], formats.GROUP_SEP, formats.DECIMAL_SEP, fractionSize).
+    replace(/\u00A4/g, currencySymbol);
+}

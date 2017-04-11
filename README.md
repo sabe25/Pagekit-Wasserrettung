@@ -21,7 +21,7 @@ Pagekit is a modular and lightweight CMS built with Symfony components and Vue.j
 
 ## Install from source
 
-If you want to run the current development version, you can [install Pagekit from source](https://pagekit.com/docs/developer-basics/source).
+If you want to run the current development version, you can [install Pagekit from source](https://pagekit.com/docs/developer/source).
 
 ## CLI
 
@@ -38,7 +38,7 @@ to our [contribution guidelines](.github/CONTRIBUTING.md). Thanks!
 
 ## Copyright and License
 
-Copyright [YOOtheme](http://www.yootheme.com) GmbH under the [MIT license](LICENSE.md).
+Copyright [YOOtheme](http://www.yootheme.com) GmbH under the [MIT license](LICENSE).
 
 ## Credits
 

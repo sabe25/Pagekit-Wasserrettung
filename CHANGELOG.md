@@ -1,10 +1,83 @@
 # Changelog
 
+## 1.0.10 (December 22, 2016)
+
+### Fixed
+- Fixed Vue Warnings in Debug Bar
+- Fixed URL replacement to undefined when using pagination (IE, Opera)
+
+### Security
+- Stored XSS in email templates, discovered by Raphael de la Vienne
+
+## 1.0.9 (November 9, 2016)
+
+### Fixed
+- Fixed self update command
+- Fixed an localisation issue which could lead to JS crashes (e.g. finder)
+
+## 1.0.8 (August 18, 2016)
+
+### Fixed
+- Fixed internalization route in maintenance mode
+- Fixed admin logout if an route alias exists
+- Fixed location widget settings
+
+### Changed
+- Make re-login modal available in front end by default
+
+## 1.0.7 (August 11, 2016)
+
+### Changed
+- Permission to access admin area now includes the right to use the site in maintenance mode
+
+### Fixed
+- Fixed JS error during user role sorting
+- Fixed unintentional duplication of dashboard widgets in rare cases
+- Fixed re-login in maintenance mode for certain API routes
+- Fixed login interceptor to not intercept CORS requests
+
+## 1.0.6 (August 8, 2016)
+
+### Added
+- Twig debug mode
+- Float filter for request arguments
+
+### Fixed
+- Fixed wrong user role assignment in very rare cases (SQLite)
+
+### Security
+- XSS vulnerabilities at 404 page, discovered by Onur Yilmaz (https://www.netsparker.com)
+- XSS vulnerabilities at login page, discovered by Raphael de la Vienne and Luuk Spreeuwenberg
+- SQL injection vulnerability, which can be misused by users with admin privileges, discovered by Raphael de la Vienne and Luuk Spreeuwenberg
+
+## 1.0.5 (July 1, 2016)
+
+### Fixed
+- Fixed asset upload
+
+## 1.0.4 (June 29, 2016)
+
+### Added
+- Added node's access check
+
+### Fixed
+- Fixed access check for user and site settings
+- Fixed admin dashboard for Safari private window
+- Fixed a situation where a node could be assigned as its own parent
+- Fixed backend password recovery
+- Fixed user approval if verification is activated as well
+- Fixed user verification state
+
 ## 1.0.3 (May 11, 2016)
 
 ### Added
 - Parse MySQL Port from hostname in installer
 - SSL support for location widget
+
+### Changed
+- Improved widget visibility settings
+- Redirect to extensions/themes overview after install and activation from marketplace
+- Changed signature of setup command
 
 ### Fixed
 - Fixed touch support in backend
@@ -13,11 +86,6 @@
 - Fixed relative date for languages without plural
 - Fixed non expiring local storage
 - Fixed style and script helper for use in Twig templates
-
-### Changed
-- Improved widget visibility settings
-- Redirect to extensions/themes overview after install and activation from marketplace
-- Changed signature of setup command
 
 ## 1.0.2 (April 22, 2016)
 

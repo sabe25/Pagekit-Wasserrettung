@@ -84,6 +84,7 @@ return [
         ],
         'system: access admin area' => [
             'title' => 'Access admin area',
+            'description' => 'Allows to access the admin area and to use the site in maintenance mode',
             'trusted' => true
         ]
 
@@ -96,7 +97,7 @@ return [
             'icon' => 'system/user:assets/images/icon-users.svg',
             'url' => '@user',
             'active' => '@user(/*)?',
-            'access' => 'user: manage users || user: manage user permissions || system: manage settings',
+            'access' => 'user: manage users || user: manage user permissions || system: access settings',
             'priority' => 115
         ],
         'user: users' => [
@@ -122,7 +123,7 @@ return [
             'label' => 'Settings',
             'parent' => 'user',
             'url' => '@user/settings',
-            'access' => 'system: manage settings'
+            'access' => 'system: access settings'
         ]
 
     ],
@@ -156,12 +157,10 @@ return [
                 $scripts->register('widget-user', 'system/user:app/bundle/widget-user.js', '~dashboard');
             }
             $scripts->register('link-user', 'system/user:app/bundle/link-user.js', '~panel-link');
-        },
 
-        'admin' => function () use ($app) {
-            $app->on('view.scripts', function($event, $scripts) {
-                $scripts('auth', 'system/user:app/bundle/interceptor.js', ['vue']);
-            });
+            if ($app['user']->isAuthenticated()) {
+                $scripts->register('auth', 'system/user:app/bundle/interceptor.js', ['~vue']);
+            }
         }
 
     ]

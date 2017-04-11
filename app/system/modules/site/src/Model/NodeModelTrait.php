@@ -90,6 +90,11 @@ trait NodeModelTrait
             $node->slug = $node->title;
         }
 
+        // A node cannot have itself as a parent
+        if ($node->parent_id === $node->id) {
+            $node->parent_id = 0;
+        }
+
         // Ensure unique slug
         while (self::where(['slug = ?', 'parent_id= ?'], [$node->slug, $node->parent_id])->where(function ($query) use ($id) {
             if ($id) $query->where('id <> ?', [$id]);
@@ -110,7 +115,7 @@ trait NodeModelTrait
         if ($id && $path != $node->path) {
             $db->executeUpdate(
                 'UPDATE '.self::getMetadata()->getTable()
-                .' SET path = REPLACE ('.$db->getDatabasePlatform()->getConcatExpression($db->quote('//'), 'path').", '//{$node->path}', '{$path}')"
+                .' SET path = REPLACE ('.$db->getDatabasePlatform()->getConcatExpression($db->quote('//'), 'path').", {$db->quote('//' . $node->path)}, {$db->quote($path)})"
                 .' WHERE path LIKE '.$db->quote($node->path.'//%'));
         }
 

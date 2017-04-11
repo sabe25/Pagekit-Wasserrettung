@@ -2,30 +2,36 @@
  * Install plugin.
  */
 
-function install(Vue) {
+import Util from './util';
+import formatDate from './date';
+import formatNumber from './number';
+import formatCurrency from './currency';
+import relativeDate from './relative';
+import defaultLocale from '../dist/locales/en.json';
 
-    var v = Vue.prototype,
-        _ = require('./util')(Vue);
+function plugin(Vue) {
 
-    require('./plural')(_);
+    var vue = Vue.prototype;
 
-    if (!v.$locale) {
-        v.$locale = require('../dist/locales/en.json');
+    if (!vue.$locale) {
+        vue.$locale = defaultLocale;
     }
 
-    v.$date = require('./date')(_);
-    v.$number = require('./number')(_);
-    v.$currency = require('./currency')(_);
-    v.$relativeDate = require('./relative')(_);
+    Util(Vue);
 
-    Vue.filter('date', v.$date);
-    Vue.filter('number', v.$number);
-    Vue.filter('currency', v.$currency);
-    Vue.filter('relativeDate', v.$relativeDate);
+    vue.$date = formatDate;
+    vue.$number = formatNumber;
+    vue.$currency = formatCurrency;
+    vue.$relativeDate = relativeDate;
+
+    Vue.filter('date', formatDate);
+    Vue.filter('number', formatNumber);
+    Vue.filter('currency', formatCurrency);
+    Vue.filter('relativeDate', relativeDate);
 }
 
-if (window.Vue) {
-    Vue.use(install);
+if (typeof window !== 'undefined' && window.Vue) {
+    window.Vue.use(plugin);
 }
 
-module.exports = install;
+export default plugin;

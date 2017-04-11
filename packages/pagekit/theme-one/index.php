@@ -127,7 +127,7 @@ return [
             if ($params['navbar_transparent'] && $view->position()->exists('hero') && $params['hero_image']) {
 
                 $sticky['top'] = '.uk-sticky-placeholder + *';
-                $classes['navbar'] .= ' tm-navbar-overlay tm-navbar-50-transparent';
+                $classes['navbar'] .= ' tm-navbar-overlay tm-navbar-transparent';
 
                 if ($params['hero_viewport']) {
                     $classes['hero'] = 'uk-height-viewport';
@@ -137,11 +137,11 @@ return [
 
                 if ($params['hero_contrast']) {
 
-                    $sticky['clsinactive'] = 'tm-navbar-50-transparent tm-navbar-contrast';
+                    $sticky['clsinactive'] = 'tm-navbar-transparent tm-navbar-contrast';
                     $classes['navbar'] .= ' tm-navbar-contrast';
 
                 } else {
-                    $sticky['clsinactive'] = 'tm-navbar-50-transparent';
+                    $sticky['clsinactive'] = 'tm-navbar-transparent';
                 }
 
             }

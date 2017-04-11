@@ -6,12 +6,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <?= $view->render('head') ?>
         <?php $view->style('theme', 'theme:css/theme.css') ?>
+        <?php $view->style('custom', 'theme:css/custom.css') ?>
         <?php $view->script('theme', 'theme:js/theme.js', ['uikit-sticky',  'uikit-lightbox',  'uikit-parallax']) ?>
+      
     </head>
-    <body class="wr-site">
+    <body>
 
         <?php if ($params['logo'] || $view->menu()->exists('main') || $view->position()->exists('navbar')) : ?>
-        <div class="<?= $params['classes.navbar'] ?>"  <?= $params['classes.sticky'] ?>>
+        <div class="<?= $params['classes.navbar'] ?>" <?= $params['classes.sticky'] ?>>
             <div class="uk-container uk-container-center">
 
                 <nav class="uk-navbar">
@@ -137,6 +139,6 @@
         <?php endif ?>
 
         <?= $view->render('footer') ?>
-
+        <script src="/pagekit/packages/pagekit/theme-one/js/custom.js?v=ac7f"></script>
     </body>
 </html>
